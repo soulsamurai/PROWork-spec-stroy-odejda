@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROWork - Профессиональная спецодежда</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3A8A',
+                        secondary: '#6B7280',
+                        accent: '#F97316',
+                        dark: '#111827',
+                        light: '#F9FAFB'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans" data-page="index">
+    <!-- Header -->
+    <header class="bg-primary text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="./index.html" class="flex items-center">
+                        <i class="fas fa-hard-hat text-3xl text-accent mr-2"></i>
+                        <span class="text-2xl font-bold">PRO<span class="text-accent">Work</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <div class="dropdown relative">
+                        <a href="./catalog.html" class="flex items-center hover:text-accent smooth-transition" data-nav="catalog">
+                            Каталог <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </a>
+                        <div class="dropdown-menu absolute hidden bg-white text-dark mt-2 py-2 w-48 rounded shadow-lg">
+                            <a href="./catalog.html?cat=workwear" class="block px-4 py-2 hover:bg-gray-100">Спецодежда</a>
+                            <a href="./catalog.html?cat=footwear" class="block px-4 py-2 hover:bg-gray-100">Спецобувь</a>
+                            <a href="./catalog.html?cat=ppe" class="block px-4 py-2 hover:bg-gray-100">СИЗ</a>
+                            <a href="./catalog.html?cat=accessories" class="block px-4 py-2 hover:bg-gray-100">Аксессуары</a>
+                        </div>
+                    </div>
+                    <a href="./catalog.html?sort=discount" class="hover:text-accent smooth-transition">Акции</a>
+                    <a href="./about.html" class="hover:text-accent smooth-transition" data-nav="about">О компании</a>
+                    <a href="./contacts.html" class="hover:text-accent smooth-transition" data-nav="contacts">Контакты</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- User Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <form class="relative" aria-label="Поиск по сайту">
+                        <input data-site-search type="text" placeholder="Поиск..." class="bg-white text-dark px-4 py-2 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-accent">
+                        <button type="submit" class="absolute right-3 top-2 text-gray-500" aria-label="Найти">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <a href="./profile.html#favorites" class="hover:text-accent smooth-transition" aria-label="Избранное"><i class="far fa-heart text-xl"></i></a>
+                    <a href="./cart.html" data-open-cart class="hover:text-accent smooth-transition relative" aria-label="Корзина">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span data-cart-count class="hidden absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"></span>
+                    </a>
+                    <a href="./profile.html" data-open-login class="hover:text-accent smooth-transition" aria-label="Профиль"><i class="far fa-user text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary-dark py-4 px-4">
+            <form class="mb-4" aria-label="Поиск по сайту (мобильный)">
+                <input data-site-search type="text" placeholder="Поиск..." class="w-full px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-accent">
+            </form>
+            <nav class="flex flex-col space-y-3">
+                <a href="./catalog.html" class="block hover:text-accent" data-nav="catalog">Каталог</a>
+                <a href="./catalog.html?sort=discount" class="block hover:text-accent">Акции</a>
+                <a href="./about.html" class="block hover:text-accent" data-nav="about">О компании</a>
+                <a href="./contacts.html" class="block hover:text-accent" data-nav="contacts">Контакты</a>
+                <div class="flex justify-between pt-2 border-t border-primary-light">
+                    <a href="./profile.html#favorites" class="text-xl" aria-label="Избранное"><i class="far fa-heart"></i></a>
+                    <a href="./cart.html" data-open-cart class="text-xl relative" aria-label="Корзина">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span data-cart-count class="hidden absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"></span>
+                    </a>
+                    <a href="./profile.html" data-open-login class="text-xl" aria-label="Профиль"><i class="far fa-user"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Профессиональная спецодежда для вашей безопасности</h1>
+                <p class="text-xl mb-8">Высокое качество, комфорт и защита для любых условий работы</p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="./catalog.html" class="bg-accent hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full text-center smooth-transition">В каталог</a>
+                    <a href="./catalog.html?sort=discount" class="bg-transparent hover:bg-white hover:text-primary border-2 border-white text-white font-bold py-3 px-6 rounded-full text-center smooth-transition">Акции</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Категории товаров</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="./catalog.html?cat=workwear" class="category-card bg-gray-50 rounded-lg p-6 text-center hover:shadow-md smooth-transition">
+                    <div class="category-icon bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4 smooth-transition">
+                        <i class="fas fa-tshirt text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Спецодежда</h3>
+                    <p class="text-secondary text-sm">Комбинезоны, куртки, брюки</p>
+                </a>
+                <a href="./catalog.html?cat=footwear" class="category-card bg-gray-50 rounded-lg p-6 text-center hover:shadow-md smooth-transition">
+                    <div class="category-icon bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4 smooth-transition">
+                        <i class="fas fa-shoe-prints text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Спецобувь</h3>
+                    <p class="text-secondary text-sm">Сапоги, ботинки, сандалии</p>
+                </a>
+                <a href="./catalog.html?cat=ppe" class="category-card bg-gray-50 rounded-lg p-6 text-center hover:shadow-md smooth-transition">
+                    <div class="category-icon bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4 smooth-transition">
+                        <i class="fas fa-head-side-mask text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">СИЗ</h3>
+                    <p class="text-secondary text-sm">Каски, перчатки, очки</p>
+                </a>
+                <a href="./catalog.html?cat=accessories" class="category-card bg-gray-50 rounded-lg p-6 text-center hover:shadow-md smooth-transition">
+                    <div class="category-icon bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4 smooth-transition">
+                        <i class="fas fa-tools text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Аксессуары</h3>
+                    <p class="text-secondary text-sm">Ремни, сумки, инструменты</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold">Популярные товары</h2>
+                <a href="./catalog.html" class="text-accent font-semibold flex items-center">
+                    Все товары <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                </a>
+            </div>
+            
+            <div id="featured-products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Special Offer -->
+    <section class="py-12 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-4">Специальное предложение для оптовых покупателей</h2>
+                    <p class="text-lg mb-6">При заказе от 50 000 ₽ — скидка 10%, от 100 000 ₽ — скидка 15% и бесплатная доставка по всей России!</p>
+                    <a href="./wholesale.html" class="bg-accent hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-full inline-block smooth-transition">Подробнее</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Специальное предложение" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Почему выбирают нас</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Гарантия качества</h3>
+                    <p class="text-secondary">Вся продукция сертифицирована и соответствует ГОСТам</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-truck text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Быстрая доставка</h3>
+                    <p class="text-secondary">Отправка в день заказа, доставка по всей России</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-primary-light bg-opacity-10 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Поддержка 24/7</h3>
+                    <p class="text-secondary">Консультации по подбору и помощь с заказом</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Отзывы наших клиентов</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Иван Петров" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Иван Петров</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary">"Заказывал комбинезоны для бригады. Качество отличное, доставили быстро. Особенно порадовали скидки за оптовый заказ. Рекомендую!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Елена Смирнова" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Елена Смирнова</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary">"Работаю в строительной компании, регулярно заказываем СИЗ. В этом магазине лучший ассортимент и цены. Персонал всегда помогает с выбором."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Алексей Козлов" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Алексей Козлов</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary">"Купил ботинки "Трактор" - ношу уже полгода, очень доволен. Удобные, прочные, не промокают. Следующий заказ буду делать только здесь."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Подпишитесь на рассылку</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Получайте первыми информацию о новых поступлениях, акциях и специальных предложениях</p>
+            <form data-newsletter-form class="max-w-md mx-auto">
+                <div class="flex">
+                <input type="email" placeholder="Ваш email" class="flex-grow px-4 py-3 rounded-l-full focus:outline-none text-dark">
+                <button type="submit" class="bg-accent hover:bg-orange-700 px-6 py-3 rounded-r-full font-semibold smooth-transition">Подписаться</button>
+                </div>
+                <p data-newsletter-msg class="mt-3 text-sm"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="./index.html" class="flex items-center mb-4">
+                        <i class="fas fa-hard-hat text-3xl text-accent mr-2"></i>
+                        <span class="text-2xl font-bold">PRO<span class="text-accent">Work</span></span>
+                    </a>
+                    <p class="text-gray-400 mb-4">Профессиональная спецодежда и средства индивидуальной защиты</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-vk text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-telegram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Каталог</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./catalog.html?cat=workwear" class="text-gray-400 hover:text-white">Спецодежда</a></li>
+                        <li><a href="./catalog.html?cat=footwear" class="text-gray-400 hover:text-white">Спецобувь</a></li>
+                        <li><a href="./catalog.html?cat=ppe" class="text-gray-400 hover:text-white">СИЗ</a></li>
+                        <li><a href="./catalog.html?cat=accessories" class="text-gray-400 hover:text-white">Аксессуары</a></li>
+                        <li><a href="./catalog.html?sort=new" class="text-gray-400 hover:text-white">Новинки</a></li>
+                        <li><a href="./catalog.html?sort=discount" class="text-gray-400 hover:text-white">Акции</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Компания</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./about.html" class="text-gray-400 hover:text-white">О нас</a></li>
+                        <li><a href="./contacts.html" class="text-gray-400 hover:text-white">Контакты</a></li>
+                        <li><a href="./checkout.html" class="text-gray-400 hover:text-white">Доставка и оплата</a></li>
+                        <li><a href="./about.html#returns" class="text-gray-400 hover:text-white">Возврат и обмен</a></li>
+                        <li><a href="./wholesale.html" class="text-gray-400 hover:text-white">Оптовым покупателям</a></li>
+                        <li><a href="./about.html#jobs" class="text-gray-400 hover:text-white">Вакансии</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            <span class="text-gray-400">г. Москва, ул. Промышленная, 15</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-accent mr-2"></i>
+                            <span class="text-gray-400">8 (800) 555-35-35</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-accent mr-2"></i>
+                            <span class="text-gray-400">info@prowork.ru</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            <span class="text-gray-400">Пн-Пт: 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 PROWork. Все права защищены.</p>
+                <div class="flex space-x-4">
+                    <a href="./about.html#privacy" class="text-gray-400 hover:text-white">Политика конфиденциальности</a>
+                    <a href="./about.html#offer" class="text-gray-400 hover:text-white">Публичная оферта</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+        <div class="bg-white w-full max-w-md h-full overflow-y-auto">
+            <div class="p-4 border-b sticky top-0 bg-white z-10 flex justify-between items-center">
+                <h3 class="text-xl font-bold">Корзина</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-dark">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="p-4" data-quick-cart-body></div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">Вход в личный кабинет</h3>
+                    <button id="close-login" class="text-gray-500 hover:text-dark">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <form>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="email">Email или телефон</label>
+                        <input type="text" id="email" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2" for="password">Пароль</label>
+                        <input type="password" id="password" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                        <a href="#" class="text-sm text-primary hover:underline mt-1 block">Забыли пароль?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded mb-4">Войти</button>
+                    <div class="text-center mb-4">
+                        <span class="text-gray-500">Или войдите с помощью</span>
+                    </div>
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-vk text-xl"></i>
+                        </button>
+                        <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </button>
+                        <button type="button" class="bg-red-500 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-google text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-gray-500">Нет аккаунта?</span>
+                        <a href="#" class="text-primary hover:underline ml-1">Зарегистрироваться</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./common.js"></script>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>

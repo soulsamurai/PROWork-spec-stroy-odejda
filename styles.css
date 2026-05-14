@@ -1,0 +1,89 @@
+/* Project custom styles (Tailwind via CDN) */
+
+:root {
+  --color-primary: #1e3a8a;
+  --color-secondary: #6b7280;
+  --color-accent: #f97316;
+  --color-dark: #111827;
+  --color-light: #f9fafb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth UI transitions */
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+
+/* Dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Cards */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.category-card:hover .category-icon {
+  transform: scale(1.1);
+  color: var(--color-accent);
+}
+
+/* Range input thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--color-accent);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+/* Hero background helper (used on index) */
+.hero-bg {
+  background-image: linear-gradient(
+      rgba(30, 58, 138, 0.85),
+      rgba(30, 58, 138, 0.85)
+    ),
+    url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Page transition (non-SPA): fade out on link click */
+body {
+  animation: pw-fade-in 0.18s ease-out both;
+}
+
+body.pw-navigate-away {
+  opacity: 0;
+  transition: opacity 0.15s ease-in;
+}
+
+@keyframes pw-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Simple utility for validation messages */
+.pw-field-error {
+  border-color: #ef4444 !important;
+}
+
+.pw-error-text {
+  color: #ef4444;
+}
+
+.pw-success-text {
+  color: #22c55e;
+}
+
